@@ -36,18 +36,18 @@
 * df10.show()
  
 # Output:
-+--------------------+-----+
-|           user_name|count|
-+--------------------+-----+
-|salinabodale73@gm...|  569|
-|sharlawar77@gmail...|  580|
-|rahilstar11@gmail...|  551|
-|deepshukla292@gma...|  565|
-|  iamnzm@outlook.com|  614|
-|markfernandes66@g...|  508|
-|damodharn21@gmail...|  253|
-|bhagyashrichalke2...|  482|
-+--------------------+-----+
+* +--------------------+-----+
+* |           user_name|count|
+* +--------------------+-----+
+* |salinabodale73@gm...|  569|
+* |sharlawar77@gmail...|  580|
+* |rahilstar11@gmail...|  551|
+* |deepshukla292@gma...|  565|
+* |  iamnzm@outlook.com|  614|
+* |markfernandes66@g...|  508|
+* |damodharn21@gmail...|  253|
+* |bhagyashrichalke2...|  482|
+* +--------------------+-----+
  
 # Step4:
 # Finding users with highest number of average hours:
@@ -58,18 +58,18 @@
 * df1 = spark.sql("select user_name from view1 where keyboard != 0 or mouse != 0").groupBy("user_name").count()
 * df1.show(truncate=False)
  
-+----------------------------+-----+
-|user_name                   |count|
-+----------------------------+-----+
-|salinabodale73@gmail.com    |436  |
-|sharlawar77@gmail.com       |457  |
-|rahilstar11@gmail.com       |399  |
-|deepshukla292@gmail.com     |475  |
-|iamnzm@outlook.com          |459  |
-|markfernandes66@gmail.com   |389  |
-|damodharn21@gmail.com       |191  |
-|bhagyashrichalke21@gmail.com|361  |
-+----------------------------+-----+
+* +----------------------------+-----+
+* |user_name                   |count|
+* +----------------------------+-----+
+* |salinabodale73@gmail.com    |436  |
+* |sharlawar77@gmail.com       |457  |
+* |rahilstar11@gmail.com       |399  |
+* |deepshukla292@gmail.com     |475  |
+* |iamnzm@outlook.com          |459  |
+* |markfernandes66@gmail.com   |389  |
+* |damodharn21@gmail.com       |191  |
+* |bhagyashrichalke21@gmail.com|361  |
+* +----------------------------+-----+
  
 # Now Again we will be creating a view as hour_view of these df1 and save it to df3.	
 * df3 = df1.createOrReplaceTempView("hour_view")
@@ -83,18 +83,18 @@
 * Here,we are running sql query on the previously created view hour_view and saving the results which is time in seconds in a column hours and finally saving it to df4.
 * Here,count-1 is used to skip the first row.
 * df4.show(truncate=False)
-+----------------------------+-------+
-|user_name                   |hours  |
-+----------------------------+-------+
-|salinabodale73@gmail.com    |21750.0|
-|sharlawar77@gmail.com       |22800.0|
-|rahilstar11@gmail.com       |19900.0|
-|deepshukla292@gmail.com     |23700.0|
-|iamnzm@outlook.com          |22900.0|
-|markfernandes66@gmail.com   |19400.0|
-|damodharn21@gmail.com       |9500.0 |
-|bhagyashrichalke21@gmail.com|18000.0|
-+----------------------------+-------+
+* +----------------------------+-------+
+* |user_name                   |hours  |
+* +----------------------------+-------+
+* |salinabodale73@gmail.com    |21750.0|
+* |sharlawar77@gmail.com       |22800.0|
+* |rahilstar11@gmail.com       |19900.0|
+* |deepshukla292@gmail.com     |23700.0|
+* |iamnzm@outlook.com          |22900.0|
+* |markfernandes66@gmail.com   |19400.0|
+* |damodharn21@gmail.com       |9500.0 |
+* |bhagyashrichalke21@gmail.com|18000.0|
+* +----------------------------+-------+
 # Now convert these hour column into hh:mm format,
 # And printing the final result:
  
@@ -104,18 +104,18 @@
 * floor((col("hours") % 86400) % 3600 / 60), lit(""),))\
 * .drop("hours")
 # Output:highest_avg_hour.show():
-+--------------------+-------------+
-|           user_name|average_hours|
-+--------------------+-------------+
-|salinabodale73@gm...|          6:2|
-|sharlawar77@gmail...|         6:20|
-|rahilstar11@gmail...|         5:31|
-|deepshukla292@gma...|         6:35|
-|  iamnzm@outlook.com|         6:21|
-|markfernandes66@g...|         5:23|
-|damodharn21@gmail...|         2:38|
-|bhagyashrichalke2...|          5:0|
-+--------------------+-------------+
+* +--------------------+-------------+
+* |           user_name|average_hours|
+* +--------------------+-------------+
+* |salinabodale73@gm...|          6:2|
+* |sharlawar77@gmail...|         6:20|
+* |rahilstar11@gmail...|         5:31|
+* |deepshukla292@gma...|         6:35|
+* |  iamnzm@outlook.com|         6:21|
+* |markfernandes66@g...|         5:23|
+* |damodharn21@gmail...|         2:38|
+* |bhagyashrichalke2...|          5:0|
+* +--------------------+-------------+
  
 # Step5:
 # Finding users with lowest number of average hours:
@@ -128,18 +128,18 @@
 * .sort(asc("average_hours"))
  
 # Output: lowest_avg_hour.show():
-+--------------------+-------------+
-|           user_name|average_hours|
-+--------------------+-------------+
-|damodharn21@gmail...|         2:38|
-|bhagyashrichalke2...|          5:0|
-|markfernandes66@g...|         5:23|
-|rahilstar11@gmail...|         5:31|
-|salinabodale73@gm...|          6:2|
-|sharlawar77@gmail...|         6:20|
-|  iamnzm@outlook.com|         6:21|
-|deepshukla292@gma...|         6:35|
-+--------------------+-------------+
+* +--------------------+-------------+
+* |           user_name|average_hours|
+* +--------------------+-------------+
+* |damodharn21@gmail...|         2:38|
+* |bhagyashrichalke2...|          5:0|
+* |markfernandes66@g...|         5:23|
+* |rahilstar11@gmail...|         5:31|
+* |salinabodale73@gm...|          6:2|
+* |sharlawar77@gmail...|         6:20|
+* |  iamnzm@outlook.com|         6:21|
+* |deepshukla292@gma...|         6:35|
+* +--------------------+-------------+
  
 # Step6:
 * Finding users with highest numbers of idle hours:
@@ -147,18 +147,18 @@
 * df5 = spark.sql("select user_name from view1 where keyboard == 0 and mouse == 0").groupBy("user_name").count()
 * df5.show(truncate=False)
  
-+----------------------------+-----+
-|user_name                   |count|
-+----------------------------+-----+
-|salinabodale73@gmail.com    |133  |
-|sharlawar77@gmail.com       |123  |
-|rahilstar11@gmail.com       |152  |
-|deepshukla292@gmail.com     |90   |
-|iamnzm@outlook.com          |155  |
-|markfernandes66@gmail.com   |119  |
-|damodharn21@gmail.com       |62   |
-|bhagyashrichalke21@gmail.com|121  |
-+----------------------------+-----+
+* +----------------------------+-----+
+* |user_name                   |count|
+* +----------------------------+-----+
+* |salinabodale73@gmail.com    |133  |
+* |sharlawar77@gmail.com       |123  |
+* |rahilstar11@gmail.com       |152  |
+* |deepshukla292@gmail.com     |90   |
+* |iamnzm@outlook.com          |155  |
+* |markfernandes66@gmail.com   |119  |
+* |damodharn21@gmail.com       |62   |
+* |bhagyashrichalke21@gmail.com|121  |
+* +----------------------------+-----+
  
 # Now Again we will be creating a view as idle_hour_view of these df5.
 	
@@ -174,18 +174,18 @@
 * Here,count-1 is used to skip the first row.
 * df6.show(truncate=False)
  
-+----------------------------+-----+-----------+
-|user_name                   |count|average_min|
-+----------------------------+-----+-----------+
-|salinabodale73@gmail.com    |133  |6600.0     |
-|sharlawar77@gmail.com       |123  |6100.0     |
-|rahilstar11@gmail.com       |152  |7550.0     |
-|deepshukla292@gmail.com     |90   |4450.0     |
-|iamnzm@outlook.com          |155  |7700.0     |
-|markfernandes66@gmail.com   |119  |5900.0     |
-|damodharn21@gmail.com       |62   |3050.0     |
-|bhagyashrichalke21@gmail.com|121  |6000.0     |
-+----------------------------+-----+-----------+
+* +----------------------------+-----+-----------+
+* |user_name                   |count|average_min|
+* +----------------------------+-----+-----------+
+* |salinabodale73@gmail.com    |133  |6600.0     |
+* |sharlawar77@gmail.com       |123  |6100.0     |
+* |rahilstar11@gmail.com       |152  |7550.0     |
+* |deepshukla292@gmail.com     |90   |4450.0     |
+* |iamnzm@outlook.com          |155  |7700.0     |
+* |markfernandes66@gmail.com   |119  |5900.0     |
+* |damodharn21@gmail.com       |62   |3050.0     |
+* |bhagyashrichalke21@gmail.com|121  |6000.0     |
+* +----------------------------+-----+-----------+
 # Now convert these hour column into hh:mm format,
 # And printing the final result:
 * from pyspark.sql.functions import *
@@ -198,18 +198,18 @@
 * idle_hour.show(truncate=False)
 # Output:
 
-+----------------------------+-----+----------+
-|user_name                   |count|idle_hours|
-+----------------------------+-----+----------+
-|iamnzm@outlook.com          |155  |2:8       |
-|rahilstar11@gmail.com       |152  |2:5       |
-|salinabodale73@gmail.com    |133  |1:50      |
-|sharlawar77@gmail.com       |123  |1:41      |
-|bhagyashrichalke21@gmail.com|121  |1:40      |
-|markfernandes66@gmail.com   |119  |1:38      |
-|deepshukla292@gmail.com     |90   |1:14      |
-|damodharn21@gmail.com       |62   |0:50      |
-+----------------------------+-----+----------+
+* +----------------------------+-----+----------+
+* |user_name                   |count|idle_hours|
+* +----------------------------+-----+----------+
+* |iamnzm@outlook.com          |155  |2:8       |
+* |rahilstar11@gmail.com       |152  |2:5       |
+* |salinabodale73@gmail.com    |133  |1:50      |
+* |sharlawar77@gmail.com       |123  |1:41      |
+* |bhagyashrichalke21@gmail.com|121  |1:40      |
+* |markfernandes66@gmail.com   |119  |1:38      |
+* |deepshukla292@gmail.com     |90   |1:14      |
+* |damodharn21@gmail.com       |62   |0:50      |
+* +----------------------------+-----+----------+
  
  
  
